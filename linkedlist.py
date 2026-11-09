@@ -75,6 +75,40 @@ class LinkedList:
         node = Node(data,itr.next)
         itr.next = node
 
+    def insert_after_value(self, data_after, data_to_insert):
+        if self.head is None:
+            self.insert_at_beginning(data_to_insert)
+
+        if self.head.data == data_after:
+            self.head.next = Node(data_to_insert,self.head.next)
+            return
+
+        itr = self.head
+        count = 0
+        while itr:
+            if itr.data == data_after:
+                itr.next = Node(data_to_insert,itr.next)
+                break
+            itr = itr.next
+
+
+    
+
+    def remove_by_value(self, data):
+        if self.head is None:
+            return
+
+        if self.head.data == data:
+            self.head == self.head.next
+            return
+        
+        itr = self.head
+        while itr:
+            if itr.next.data == data:
+                itr.next == itr.next.next
+                break
+            itr=itr.next
+
 if __name__ == '__main__':
     ll = LinkedList()
     ll.insert_values(["banana","mango","apple","orange"])
